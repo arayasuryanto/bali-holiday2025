@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard Pengeluaran Liburan Bali</title>
+  <link rel="stylesheet" href="styles.css">
+  <!-- Chart.js for simpler charts -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>Dashboard Pengeluaran Liburan Bali</h1>
+      <p>Tracking pengeluaran selama liburan di Bali (D0-D4) berdasarkan kategori, lokasi, dan hari</p>
+      <div class="category-legend">
+        <span class="category-tag" style="background-color: #FF8042;">Makanan & Minuman</span>
+        <span class="category-tag" style="background-color: #0088FE;">Transportasi</span>
+        <span class="category-tag" style="background-color: #FFBB28;">Belanja & Oleh-oleh</span>
+        <span class="category-tag" style="background-color: #00C49F;">Belanja & Konsumsi</span>
+        <span class="category-tag" style="background-color: #9966FF;">Akomodasi</span>
+        <span class="category-tag" style="background-color: #FF6666;">Lain-lain</span>
+      </div>
+    </div>
+
+    <div class="summary-cards">
+      <div class="card">
+        <h3>Total Pengeluaran</h3>
+        <p id="total-expense" class="value"></p>
+      </div>
+      <div class="card">
+        <h3>Kategori Tertinggi</h3>
+        <p id="highest-category" class="value"></p>
+        <p id="highest-category-amount" class="sub-value"></p>
+      </div>
+      <div class="card">
+        <h3>Hari Pengeluaran Tertinggi</h3>
+        <p id="highest-day" class="value"></p>
+        <p id="highest-day-amount" class="sub-value"></p>
+      </div>
+      <div class="card">
+        <h3>Rata-rata per Hari</h3>
+        <p id="average-expense" class="value"></p>
+      </div>
+    </div>
+
+    <div class="charts-container">
+      <div class="chart-card">
+        <h3>Distribusi Pengeluaran per Kategori</h3>
+        <div class="chart-area">
+          <canvas id="pie-chart"></canvas>
+        </div>
+      </div>
+      <div class="chart-card">
+        <h3>Pengeluaran Harian</h3>
+        <div class="chart-area">
+          <canvas id="bar-chart"></canvas>
+        </div>
+      </div>
+    </div>
+
+    <div class="table-section">
+      <div class="table-header">
+        <h3>Detail Pengeluaran</h3>
+        <select id="day-filter">
+          <option value="all">Semua Hari</option>
+          <!-- Days will be added dynamically -->
+        </select>
+      </div>
+      <div class="table-container">
+        <table id="expense-table">
+          <thead>
+            <tr>
+              <th>Hari</th>
+              <th>Deskripsi</th>
+              <th>Kategori</th>
+              <th>Jumlah</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Table rows will be added dynamically -->
+          </tbody>
+          <tfoot>
+            <tr>
+              <td colspan="3" class="text-right"><strong>Total:</strong></td>
+              <td id="table-total" class="text-right"></td>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+    </div>
+
+    <div class="chart-card">
+      <h3>Tren Pengeluaran Harian</h3>
+      <div class="chart-area">
+        <canvas id="line-chart"></canvas>
+      </div>
+    </div>
+  </div>
+
+  <script src="data.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
