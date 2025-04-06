@@ -17,13 +17,24 @@ const formatCurrency = (value) => {
     'Lain-lain': '#FF6666'
   };
   
-  // Destructure React components
-  const { 
-    useState, useEffect,
-    BarChart, Bar, PieChart, Pie, LineChart, Line, 
-    XAxis, YAxis, CartesianGrid, Tooltip, Legend, 
-    ResponsiveContainer, Cell
-  } = Recharts;
+  // Access React components more explicitly
+  const useState = React.useState;
+  const useEffect = React.useEffect;
+  
+  // Access Recharts components more explicitly
+  const BarChart = Recharts.BarChart;
+  const Bar = Recharts.Bar;
+  const PieChart = Recharts.PieChart;
+  const Pie = Recharts.Pie;
+  const LineChart = Recharts.LineChart;
+  const Line = Recharts.Line;
+  const XAxis = Recharts.XAxis;
+  const YAxis = Recharts.YAxis;
+  const CartesianGrid = Recharts.CartesianGrid;
+  const Tooltip = Recharts.Tooltip;
+  const Legend = Recharts.Legend;
+  const ResponsiveContainer = Recharts.ResponsiveContainer;
+  const Cell = Recharts.Cell;
   
   // Dashboard Component
   const BaliExpenseDashboard = () => {
@@ -167,14 +178,14 @@ const formatCurrency = (value) => {
             <h3 className="text-lg font-semibold text-gray-700">Kategori Tertinggi</h3>
             <p className="text-2xl font-bold text-blue-600">{highestCategory}</p>
             <p className="text-sm text-gray-500">
-              {highestCategory && formatCurrency(categoryData.find(c => c.name === highestCategory)?.value || 0)}
+              {highestCategory && formatCurrency((categoryData.find(function(c) { return c.name === highestCategory; }) || {}).value || 0)}
             </p>
           </div>
           <div className="bg-white p-4 rounded-lg shadow-md">
             <h3 className="text-lg font-semibold text-gray-700">Hari Pengeluaran Tertinggi</h3>
             <p className="text-2xl font-bold text-blue-600">{highestDay}</p>
             <p className="text-sm text-gray-500">
-              {highestDay && formatCurrency(dailyData.find(d => d.name === highestDay)?.total || 0)}
+              {highestDay && formatCurrency(dailyData.find(function(d) { return d.name === highestDay; })?.value || 0)}
             </p>
           </div>
           <div className="bg-white p-4 rounded-lg shadow-md">
